@@ -8,4 +8,14 @@
         android:title="@string/add"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/menu_import_default_source"
+        android:title="@string/import_default_book_source"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_update_all"
+        android:title="@string/update_all_book_source"
+        app:showAsAction="never" />
+
 </menu>

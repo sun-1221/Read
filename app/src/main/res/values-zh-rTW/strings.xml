@@ -813,6 +813,12 @@
     <string name="header_footer">頁首<![CDATA[&]]>頁尾</string>
     <string name="rule_subscription">規則訂閱</string>
     <string name="rule_sub_empty_msg">新增大佬們提供的規則匯入地址\n新增後點擊可匯入規則</string>
+    <string name="import_default_book_source">匯入預設書源</string>
+    <string name="update_all_book_source">全部更新書源</string>
+    <string name="import_default_source_success">已匯入 %d 條預設書源訂閱</string>
+    <string name="all_source_exist">所有預設書源訂閱已存在</string>
+    <string name="no_book_source_sub">沒有書源類型的訂閱</string>
+    <string name="updating_source_sub">正在更新：%s</string>
     <string name="get_book_progress">拉取雲端進度</string>
     <string name="cover_book_progress">覆蓋雲端進度</string>
     <string name="current_progress_exceeds_cloud">目前進度超過雲端進度，是否同步？</string>

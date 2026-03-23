@@ -6,6 +6,7 @@ import io.legado.app.data.entities.DictRule
 import io.legado.app.data.entities.HttpTTS
 import io.legado.app.data.entities.KeyboardAssist
 import io.legado.app.data.entities.RssSource
+import io.legado.app.data.entities.RuleSub
 import io.legado.app.data.entities.TxtTocRule
 import io.legado.app.help.config.LocalConfig
 import io.legado.app.help.config.ReadBookConfig
@@ -108,6 +109,20 @@ object DefaultData {
                 .readBytes()
         )
         GSON.fromJsonArray<KeyboardAssist>(json).getOrThrow()
+    }
+
+    data class DefaultSourceSub(
+        val name: String = "",
+        val url: String = "",
+        val type: Int = 0
+    )
+
+    val defaultBookSourceSubs: List<DefaultSourceSub> by lazy {
+        val json = String(
+            appCtx.assets.open("defaultData${File.separator}defaultBookSourceSubs.json")
+                .readBytes()
+        )
+        GSON.fromJsonArray<DefaultSourceSub>(json).getOrDefault(emptyList())
     }
 
     fun importDefaultHttpTTS() {

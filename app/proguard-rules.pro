@@ -137,6 +137,9 @@ cn.hutool.core.util.**{*;}
     *** sTestTrustManager;
 }
 
+# DefaultData 中的数据类，GSON 反序列化需要
+-keep class io.legado.app.help.DefaultData$DefaultSourceSub{*;}
+
 # Throwable
 -keepnames class * extends java.lang.Throwable
 -keepclassmembernames,allowobfuscation class * extends java.lang.Throwable{*;}

@@ -13,6 +13,7 @@ import io.legado.app.data.appDb
 import io.legado.app.data.entities.RuleSub
 import io.legado.app.databinding.ActivityRuleSubBinding
 import io.legado.app.databinding.DialogRuleSubEditBinding
+import io.legado.app.help.DefaultData
 import io.legado.app.lib.dialogs.alert
 import io.legado.app.ui.association.ImportBookSourceDialog
 import io.legado.app.ui.association.ImportReplaceRuleDialog
@@ -54,6 +55,8 @@ class RuleSubActivity : BaseActivity<ActivityRuleSubBinding>(),
                 val order = appDb.ruleSubDao.maxOrder + 1
                 editSubscription(RuleSub(customOrder = order))
             }
+            R.id.menu_import_default_source -> importDefaultBookSources()
+            R.id.menu_update_all -> updateAllBookSources()
         }
         return super.onCompatOptionsItemSelected(item)
     }
@@ -142,6 +145,61 @@ class RuleSubActivity : BaseActivity<ActivityRuleSubBinding>(),
                 ruleSub.customOrder = index + 1
             }
             appDb.ruleSubDao.update(*sourceSubs.toTypedArray())
+        }
+    }
+
+    /**
+     * 导入默认书源订阅地址
+     */
+    private fun importDefaultBookSources() {
+        lifecycleScope.launch {
+            val defaultSubs = DefaultData.defaultBookSourceSubs
+            if (defaultSubs.isEmpty()) {
+                toastOnUi(R.string.no_book_source_sub)
+                return@launch
+            }
+            var importCount = 0
+            withContext(IO) {
+                var order = appDb.ruleSubDao.maxOrder
+                for (sub in defaultSubs) {
+                    val existing = appDb.ruleSubDao.findByUrl(sub.url)
+                    if (existing == null) {
+                        order++
+                        val ruleSub = RuleSub(
+                            name = sub.name,
+                            url = sub.url,
+                            type = sub.type,
+                            customOrder = order
+                        )
+                        appDb.ruleSubDao.insert(ruleSub)
+                        importCount++
+                    }
+                }
+            }
+            if (importCount > 0) {
+                toastOnUi(getString(R.string.import_default_source_success, importCount))
+            } else {
+                toastOnUi(R.string.all_source_exist)
+            }
+        }
+    }
+
+    /**
+     * 全部更新书源：遍历所有书源类型的订阅，逐个弹出导入对话框
+     */
+    private fun updateAllBookSources() {
+        lifecycleScope.launch {
+            val bookSourceSubs = withContext(IO) {
+                appDb.ruleSubDao.all.filter { it.type == 0 }
+            }
+            if (bookSourceSubs.isEmpty()) {
+                toastOnUi(R.string.no_book_source_sub)
+                return@launch
+            }
+            for (sub in bookSourceSubs) {
+                toastOnUi(getString(R.string.updating_source_sub, sub.name))
+                showDialogFragment(ImportBookSourceDialog(sub.url))
+            }
         }
     }
 

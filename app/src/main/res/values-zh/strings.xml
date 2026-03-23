@@ -821,6 +821,12 @@
     <string name="header_footer">页眉<![CDATA[&]]>页脚</string>
     <string name="rule_subscription">规则订阅</string>
     <string name="rule_sub_empty_msg">添加大佬们提供的规则导入地址\n添加后点击可导入规则</string>
+    <string name="import_default_book_source">导入默认书源</string>
+    <string name="update_all_book_source">全部更新书源</string>
+    <string name="import_default_source_success">已导入 %d 条默认书源订阅</string>
+    <string name="all_source_exist">所有默认书源订阅已存在</string>
+    <string name="no_book_source_sub">没有书源类型的订阅</string>
+    <string name="updating_source_sub">正在更新：%s</string>
     <string name="get_book_progress">拉取云端进度</string>
     <string name="cover_book_progress">覆盖云端进度</string>
     <string name="current_progress_exceeds_cloud">当前进度超过云端进度，是否同步？</string>

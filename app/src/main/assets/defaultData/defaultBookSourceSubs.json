@@ -1,0 +1,42 @@
+[
+  {
+    "name": "XIU2 精品书源 (bitbucket)",
+    "url": "https://bitbucket.org/xiu2/yuedu/raw/master/shuyuan",
+    "type": 0
+  },
+  {
+    "name": "XIU2 精品书源 (jsd CDN)",
+    "url": "https://jsd.onmicrosoft.cn/gh/XIU2/Yuedu/shuyuan",
+    "type": 0
+  },
+  {
+    "name": "XIU2 精品书源 (jsdmirror)",
+    "url": "https://cdn.jsdmirror.com/gh/XIU2/Yuedu/shuyuan",
+    "type": 0
+  },
+  {
+    "name": "entr0pia 自选书源",
+    "url": "https://raw.githubusercontent.com/entr0pia/MyLegadoSource/master/bookSource.json",
+    "type": 0
+  },
+  {
+    "name": "楠枫书源",
+    "url": "https://shuyuan.nyasama.cc/shuyuan/f5b15e9641d164937061974cfefb675c.json",
+    "type": 0
+  },
+  {
+    "name": "个人校验书源",
+    "url": "https://shuyuan.nyasama.cc/shuyuan/12f348d3510bac0e5f1b164274f0b136.json",
+    "type": 0
+  },
+  {
+    "name": "明月书阁订阅源",
+    "url": "https://shuyuan.nyasama.net/shuyuan/2a406b53a180ecbc921c4956b8860478.json",
+    "type": 1
+  },
+  {
+    "name": "个人校验订阅",
+    "url": "https://shuyuan.nyasama.cc/shuyuan/1ca18c905ade022c7d63c1277fd7e184.json",
+    "type": 1
+  }
+]
